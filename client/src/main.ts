@@ -1,5 +1,6 @@
 import './styles/jass.css';
 
+
 // * All necessary DOM elements selected
 const searchForm: HTMLFormElement = document.getElementById(
   'search-form'
@@ -35,7 +36,7 @@ API Calls
 */
 
 const fetchWeather = async (cityName: string) => {
-  const response = await fetch(`/api/weather`, {
+  const response = await fetch(`/api/weather${cityName}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
