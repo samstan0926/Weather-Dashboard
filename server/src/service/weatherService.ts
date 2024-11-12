@@ -37,37 +37,7 @@ class WeatherService {
 
   }
 
-  // TODO: Create fetchLocationData method
-  /*private async fetchLocationData(query: string) {
 
-    try {
-      const response = await fetch(
-        `${this.baseURL}/data/2.5/forecast?q=${query}&appid=${this.apiKey}`
-      );
-
-      const weatherData = await response.json();
-
-      return weatherData;
-
-    } catch (err) {
-      console.log('Error:', err);
-      return err;
-    }
-
-
-  }*/
-
-  // TODO: Create destructureLocationData method
-  /* private destructureLocationData(locationData: Coordinates): Coordinates {
-     
-     let locationCoordinates: Coordinates = {
-       lat: locationData.lat,
-       lon: locationData.lon,
-     } 
-     return locationCoordinates;
-   }*/
-  // TODO: Create buildGeocodeQuery method
-  //private buildGeocodeQuery(): string {}
   // TODO: Create buildWeatherQuery method
   private async fetchAndDestructureLocationData(query: string): Promise<any> {
 
@@ -101,17 +71,17 @@ class WeatherService {
   // TODO: Create fetchAndDestructureLocationData method
 
   // TODO: Create fetchWeatherData method
-  private async fetchWeatherData(coordinates: Coordinates): Promise<any>{
+  private async fetchWeatherData(coordinates: Coordinates): Promise<any> {
     try {
-    let fetchURL = this.buildWeatherQuery(coordinates);
-    const response = await fetch(fetchURL);
-    const weatherData = await response.json();
-    return weatherData;
-  } catch (err) {
-    console.log('Error:', err);
-    return err;
+      let fetchURL = this.buildWeatherQuery(coordinates);
+      const response = await fetch(fetchURL);
+      const weatherData = await response.json();
+      return weatherData;
+    } catch (err) {
+      console.log('Error:', err);
+      return err;
 
-  }
+    }
   }
   // TODO: Build parseCurrentWeather method
   private parseCurrentWeather(currentWeatherData: any) {
@@ -129,16 +99,16 @@ class WeatherService {
       humidity: currentWeatherData.main.humidity,
 
     }
-    
+
     return currentWeather;
 
   }
   private async buildCurrentWeatherQuery(coordinates: Coordinates) {
     try {
-    let response = await fetch(`${this.baseURL}/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${this.apiKey}&units=imperial`)
+      let response = await fetch(`${this.baseURL}/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${this.apiKey}&units=imperial`)
 
-    let currentWeatherData = await response.json();
-    return currentWeatherData;
+      let currentWeatherData = await response.json();
+      return currentWeatherData;
     } catch (err) {
       console.log('Error:', err);
       return err;
